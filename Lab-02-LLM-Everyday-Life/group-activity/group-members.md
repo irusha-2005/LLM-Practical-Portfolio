@@ -1,6 +1,5 @@
 # Group 7: The Overloaded Student
 
-> Fill in your real details. Delete this line when done.
 
 | Name | Student ID | Role / Contribution |
 |------|------------|---------------------|
