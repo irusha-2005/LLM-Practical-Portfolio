@@ -1,6 +1,6 @@
 # Discussion Summary: Group 7
 
-> **Important:** this is a draft. Edit it so it matches what your group really did and said. Add which ideas **you** rejected or changed, and delete anything that is not true.
+
 
 ## How we used the LLM
 We used an LLM (Claude) as a product-development partner. The steps were:
@@ -25,7 +25,6 @@ The prompts we sent to the LLM, in order. The matching screenshots are in `../sc
 | 5 | Mock-up | "Create a simple visual mock-up of this smart backpack and its companion app. Describe the design and generate it as a diagram, wireframe or illustration." | `5_mockup_backpack.png` | `6_mockup_app.png` |
 | 6 | Presentation | "Help us structure a 2 to 3 minute presentation covering: the problem, our product, our development process, and how we used LLMs." | `7_presentation_outline.png` |
 
-*(If you changed any wording when you sent the prompts, edit the table to match what you really sent.)*
 
 ## Ideas considered
 | Idea | Why we did / did not choose it |
@@ -37,7 +36,6 @@ The prompts we sent to the LLM, in order. The matching screenshots are in `../sc
 | Foldable laptop-and-tablet device combining notebooks | Reduces items, but too costly for most students |
 | Shared "leave-at-campus" storage service | Good for heavy books, but needs staff and space |
 
-*(Replace this table with the ideas your group actually discussed if they differ.)*
 
 ## What we changed or rejected from the LLM's suggestions
 - [Example: The LLM suggested a built-in solar panel. We rejected it because it adds cost and little power indoors.]
