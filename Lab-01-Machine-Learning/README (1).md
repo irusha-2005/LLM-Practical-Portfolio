@@ -100,7 +100,8 @@ I used `train_test_split(test_size=0.2, random_state=42, stratify=y)`. This gave
 ### Task 5: Bag-of-Words representation
 I used `CountVectorizer(max_features=5000)`. The vectorizer was **fitted on the training data only** and then applied to the test data, to avoid data leakage. Stopwords were **not** removed here, so negation words such as "not" and "no" stay in the vocabulary. The training matrix has shape `(2400, 4504)` and the test matrix `(600, 4504)`.
 
-![Split and BoW](screenshots/10_split_bow.png)
+![Split and BoW](screenshots/4_split_the_dataset.png)
+![Split and BoW](screenshots/5_create_BOW_representaion.png)
 
 ### Task 6: Train the models
 I trained two classifiers on the BoW features:
