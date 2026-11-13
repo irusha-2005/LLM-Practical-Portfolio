@@ -108,6 +108,8 @@ I trained two classifiers on the BoW features:
 - `LogisticRegression(max_iter=1000)`
 - `LinearSVC()`
 
+![Train the models](screenshots/6_train_the_models.png)
+
 ### Task 7: Evaluate the models
 I evaluated both models on the unseen test set using accuracy, precision, recall, F1-score and a confusion matrix.
 
