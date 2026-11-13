@@ -85,6 +85,7 @@ Demo on one sentence (`Wow...   I didn't like it!!  It's NOT 100% GREAT :)` beco
 ![Examples](screenshots/3.1_display_positive_and_negative_examples.png)
 ![Class balance](screenshots/3.2_Class_balance.png)
 ![Top words](screenshots/3.3_Identify_frequently_occurring_words.png)
+![Top words](screenshots/3.3.1_Identify_frequently_occurring_words_(plt).png)
 ![Shared and unique words](screenshots/07_shared_words.png)
 ![Sentence length](screenshots/08_length.png)
 
