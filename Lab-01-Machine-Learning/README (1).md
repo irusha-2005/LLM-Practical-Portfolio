@@ -113,8 +113,10 @@ I trained two classifiers on the BoW features:
 ### Task 7: Evaluate the models
 I evaluated both models on the unseen test set using accuracy, precision, recall, F1-score and a confusion matrix.
 
-![Logistic Regression metrics](screenshots/11_metrics_lr.png)
-![Linear SVM metrics](screenshots/12_metrics_svm.png)
+![Logistic Regression metrics](screenshots/7_evaluate_the_model’s_performance_(Logistic_Regression).png)
+![Logistic Regression confusion metrics](screenshots/7.1_confusion_matrix_(Logistic_Regression).png)
+![Linear SVM metrics](screenshots/7.2_evaluate_the_model’s_performance_(Logistic_SVM).png)
+![Linear SVM confusion metrics](screenshots/7.3_confusion_matrix_(Logistic_SVM).png)
 
 ### Task 8: Test with new sentences
 I wrote a `predict_sentiment()` function that cleans a new sentence, converts it with the trained vectorizer and predicts the label with each model. I used 7 sentences, including a mixed one, a neutral one and two with negation.
@@ -130,7 +132,7 @@ I wrote a `predict_sentiment()` function that cleans a new sentence, converts it
 
 Precision, recall and F1 are for the positive class.
 
-![Summary table](screenshots/13_summary_table.png)
+![Summary table](screenshots/7.4_summary_table.png)
 
 **Examples of misclassified test sentences (Logistic Regression):**
 
@@ -143,7 +145,7 @@ Precision, recall and F1 are for the positive class.
 | never had anything to complain about here | Positive | Negative |
 | the films dialogue is natural real to life | Positive | Negative |
 
-![Errors](screenshots/14_errors.png)
+![Errors](screenshots/7.5_errors.png)
 
 **Predictions on new sentences:**
 
@@ -157,7 +159,8 @@ Precision, recall and F1 are for the positive class.
 | It was okay, nothing special. | Negative | Negative |
 | The delivery was fast and the quality is excellent. | Positive | Positive |
 
-![New sentences](screenshots/15_new_sentences.png)
+![New sentences](screenshots/8_test_the_model_with_new_sentence.png)
+![New sentences](screenshots/8.1_test_the_model_with_new_sentence_result.png)
 
 ## Observations
 
