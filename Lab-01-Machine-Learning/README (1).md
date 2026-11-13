@@ -44,7 +44,7 @@ The full code and outputs are in [`notebook/lab01.ipynb`](notebook/lab01.ipynb).
 ### Task 1: Download and load the dataset
 The three files are tab-separated with no header (`sentence \t score`). I loaded each one with `pd.read_csv(..., sep='\t', names=['text','label'], quoting=3)`, added a `source` column, and combined them into one DataFrame of shape `(3000, 3)` with 1500 sentences per class.
 
-![Data loaded](screenshots/01_data_loaded.png)
+![Data loaded](screenshots/1.data_loaded.png)
 
 ### Task 2: Text preprocessing
 I wrote a `clean_text()` function that:
