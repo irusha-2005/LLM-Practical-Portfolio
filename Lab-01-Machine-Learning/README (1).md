@@ -115,8 +115,8 @@ I evaluated both models on the unseen test set using accuracy, precision, recall
 
 ![Logistic Regression metrics](screenshots/7_evaluate_the_model’s_performance_(Logistic_Regression).png)
 ![Logistic Regression confusion metrics](screenshots/7.1_confusion_matrix_(Logistic_Regression).png)
-![Linear SVM metrics](screenshots/7.2_evaluate_the_model’s_performance_(Logistic_SVM).png)
-![Linear SVM confusion metrics](screenshots/7.3_confusion_matrix_(Logistic_SVM).png)
+![Linear SVM metrics](screenshots/7.2_evaluate_the_model’s_performance_(Linear_SVM).png)
+![Linear SVM confusion metrics](screenshots/7.3_confusion_matrix_(Linear_SVM).png)
 
 ### Task 8: Test with new sentences
 I wrote a `predict_sentiment()` function that cleans a new sentence, converts it with the trained vectorizer and predicts the label with each model. I used 7 sentences, including a mixed one, a neutral one and two with negation.
