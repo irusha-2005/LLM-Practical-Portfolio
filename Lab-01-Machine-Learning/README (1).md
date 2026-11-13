@@ -92,7 +92,7 @@ Demo on one sentence (`Wow...   I didn't like it!!  It's NOT 100% GREAT :)` beco
 
 The written comparison of positive and negative reviews, as it appears in the notebook:
 
-![Observations cell](screenshots/09_observations.png)
+![Observations cell](screenshots/3.6_observations_positive_vs_negative_reviews.png)
 
 ### Task 4: Split the dataset
 I used `train_test_split(test_size=0.2, random_state=42, stratify=y)`. This gave 2400 training sentences and 600 test sentences, with 1200 of each class in the training set. `stratify=y` keeps the class balance equal in both parts.
