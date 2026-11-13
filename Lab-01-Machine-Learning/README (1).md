@@ -87,7 +87,8 @@ Demo on one sentence (`Wow...   I didn't like it!!  It's NOT 100% GREAT :)` beco
 ![Top words](screenshots/3.3_Identify_frequently_occurring_words.png)
 ![Top words](screenshots/3.3.1_Identify_frequently_occurring_words_(plt).png)
 ![Shared and unique words](screenshots/3.4_words_that_appear_in_both_classes.png)
-![Sentence length](screenshots/08_length.png)
+![Sentence length](screenshots/3.5_sentence_length_per_class.png)
+![Sentence length](screenshots/3.5.1_sentence_length_per_class_(plt).png)
 
 The written comparison of positive and negative reviews, as it appears in the notebook:
 
