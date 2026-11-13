@@ -2,7 +2,6 @@
 
 **Module:** PUSL3205 Large Language Models and Generative AI
 
-> Fill in every `[...]` with your own results from the notebook, then delete this line.
 
 ## Laboratory Session
 **Lab 3:** Developing a Tiny Transformer Language Model
@@ -98,7 +97,7 @@ The screenshots for each task are shown above. The key results are summarised he
 
 ### Example generated story ("Once upon a time")
 ```
-[paste a short piece of your generated text here]
+Once upon a time, there was a but around fround! She was a speatch was and say. He looked the dowd had to her couldly hid finds! He pooke and make the evil at he put namil and said, "Wen't wide in your duck stay, I wet it was goods. It says wated he was dide the now.
 ```
 
 ### Model-setting experiments
@@ -112,7 +111,6 @@ The screenshots for each task are shown above. The key results are summarised he
 Effect of epochs (main run): validation loss [2.2269] after 2 epochs and [1.4215] after [8] epochs.
 
 ## Observations
-*(Write these from your own results.)*
 - **Dataset:** [typical story length, simple vocabulary, common openings]
 - **Training:** [did the loss fall steadily? was validation loss close to training loss?]
 - **Generated text:** [were words real? grammar? did the story stay on topic?]
