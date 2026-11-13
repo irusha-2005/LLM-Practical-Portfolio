@@ -69,7 +69,6 @@ The prompts we sent to the LLM, in order. The matching screenshots are in `scree
 
 ![LoadLight app mock-up](screenshots/6_mockup_app.png)
 
-*Concept illustrations with sample data. They are not a final industrial design.*
 
 ### Presentation outline (2 to 3 minutes)
 | Time | Content |
@@ -86,7 +85,6 @@ The prompts we sent to the LLM, in order. The matching screenshots are in `scree
 - Asking the LLM to **criticise its own concept** exposed real weaknesses (extra weight and cost, tag batteries, battery safety, privacy) that were not in the first answer.
 - The LLM does not know real prices, campus rules or student habits. Claims such as safe bag-weight limits need to be checked against reliable sources.
 - The mock-ups are concept illustrations. They communicate the idea but would need a professional designer and real user testing.
-- *(Add your own observations here: what surprised the group, what you disagreed with, and where you changed the LLM's suggestions.)*
 
 ## Learning Outcomes
 - Used an LLM as a design partner, using step-by-step prompts for problem analysis, brainstorming, concept development, critique and presentation planning.
