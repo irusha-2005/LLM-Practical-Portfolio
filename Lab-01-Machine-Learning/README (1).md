@@ -69,7 +69,7 @@ def clean_text(t):
 
 Comparison of original and preprocessed text:
 
-![Cleaning comparison](screenshots/2_preform_basic_text_preprocessing.png)
+![Cleaning comparison](screenshots/2_perform_basic_text_preprocessing.png)
 
 Demo on one sentence (`Wow...   I didn't like it!!  It's NOT 100% GREAT :)` becomes `wow i did not like it its not great`):
 
