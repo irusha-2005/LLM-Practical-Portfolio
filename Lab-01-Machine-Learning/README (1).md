@@ -83,7 +83,7 @@ Demo on one sentence (`Wow...   I didn't like it!!  It's NOT 100% GREAT :)` beco
 - Compared sentence length between classes.
 
 ![Examples](screenshots/3.1_display_positive_and_negative_examples.png)
-![Class balance](screenshots/05_class_balance.png)
+![Class balance](screenshots/3.2_Class_balance.png)
 ![Top words](screenshots/06_top_words.png)
 ![Shared and unique words](screenshots/07_shared_words.png)
 ![Sentence length](screenshots/08_length.png)
