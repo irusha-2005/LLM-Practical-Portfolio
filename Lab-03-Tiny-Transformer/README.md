@@ -26,30 +26,30 @@ Lab-03-Tiny-Transformer/
 Full code: [`notebooks/lab03_tiny_transformer.ipynb`](notebook/lab03_tiny_transformer.ipynb)
 
 ### Task 1: Load the dataset
-Downloaded the first part of the `roneneldan/TinyStories` text files from Hugging Face (about 3 MB of `TinyStories-train.txt` and 0.5 MB of `TinyStories-valid.txt`) and split them into [3000] training stories and [300] validation stories. I used a direct download instead of the `datasets` library because a Windows security policy blocked the `pyarrow` library that `datasets` needs. Displayed several stories and examined their length in characters and words and their structure (short paragraphs, simple words).
+Downloaded the first part of the `roneneldan/TinyStories` text files from Hugging Face (about 3 MB of `TinyStories-train.txt` and 0.5 MB of `TinyStories-valid.txt`) and split them into 3000 training stories and 300 validation stories. I used a direct download instead of the `datasets` library because a Windows security policy blocked the `pyarrow` library that `datasets` needs. Displayed several stories and examined their length in characters and words and their structure (short paragraphs, simple words).
 
 ![Example stories](results/1_dataset_stories.png)
 ![stories](results/1.1_stories.png)
 ![Story lengths](results/1.2_dataset_lengths.png)
 
 ### Task 2: Preprocess and tokenize
-Cleaned special symbols, joined the stories into one text and used a character-level tokenizer with a vocabulary of [74] characters.
+Cleaned special symbols, joined the stories into one text and used a character-level tokenizer with a vocabulary of 74 characters.
 
 ![Tokenizer and vocabulary](results/2_tokenizer.png)
 
 ### Task 3: Prepare training data
-Created input blocks of [128] characters and targets shifted by one character (next-token prediction), in batches of [32].
+Created input blocks of 128 characters and targets shifted by one character (next-token prediction), in batches of 32.
 
 ![Input and target example](results/3_training_data.png)
 
 ### Task 4 and 5: Build the Transformer and initialize it
-Built token embeddings, positional embeddings, masked multi-head self-attention, feed-forward layers (GELU), residual connections and layer normalization, stacked in [4] blocks with [4] heads and embedding size [128]. Weights start from Normal(0, 0.02). The loss is cross-entropy and the optimizer is AdamW (learning rate [1e-3]). The model has [819,200] parameters. The initial loss was [value], close to ln(vocab size) = [ 4.304 ], as expected for an untrained model.
+Built token embeddings, positional embeddings, masked multi-head self-attention, feed-forward layers (GELU), residual connections and layer normalization, stacked in 4 blocks with 4 heads and embedding size 128. Weights start from Normal(0, 0.02). The loss is cross-entropy and the optimizer is AdamW (learning rate [1e-3]). The model has 819,200 parameters. The initial loss was 4.371, close to ln(vocab size) =  4.304 , as expected for an untrained model.
 
 ![Model parameters and initial loss](results/4_model_defined.png)
 ![Model parameters and initial loss](results/5_model_parameters.png)
 
 ### Task 6: Train the model
-Trained for [8] epochs of [100] steps. Each step predicts the next characters, computes the cross-entropy loss, backpropagates, clips gradients and updates the parameters.
+Trained for 8 epochs of 100 steps. Each step predicts the next characters, computes the cross-entropy loss, backpropagates, clips gradients and updates the parameters.
 
 ![Training output](results/6_training_output.png)
 
@@ -90,10 +90,10 @@ The screenshots for each task are shown above. The key results are summarised he
 ### Evaluation
 | Metric | Value |
 |---|---|
-| Final training loss | [1.4716] |
-| Final validation loss | [1.4237] |
-| Perplexity (per character) | [4.15] |
-| Random-guess perplexity | [74] |
+| Final training loss | 1.4716 |
+| Final validation loss | 1.4237 |
+| Perplexity (per character) | 4.15 |
+| Random-guess perplexity | 74 |
 
 ### Example generated story ("Once upon a time")
 ```
@@ -103,21 +103,21 @@ Once upon a time, there was a but around fround! She was a speatch was and say. 
 ### Model-setting experiments
 | Setting | Parameters | Val loss | Perplexity |
 |---|---|---|---|
-| 1 layer, 4 heads | [ 224,384 ] | [ 1.7793  ] | [ 5.93 ] |
-| 2 layers, 4 heads | [ 422,656  ] | [ 1.7361  ] | [ 5.67 ] |
-| 4 layers, 1 head | [ 819,200  ] | [ 1.6563  ] | [ 5.24 ] |
-| 4 layers, 4 heads | [ 819,200 ] | [ 1.7303  ] | [ 5.64 ] |
+| 1 layer, 4 heads |  224,384  |  1.7793   |  5.93  |
+| 2 layers, 4 heads |  422,656   |  1.7361   |  5.67  |
+| 4 layers, 1 head |  819,200   |  1.6563   |  5.24  |
+| 4 layers, 4 heads |  819,200  |  1.7303   |  5.64  |
 
-Effect of epochs (main run): validation loss [2.2269] after 2 epochs and [1.4215] after [8] epochs.
+Effect of epochs (main run): validation loss 2.2269 after 2 epochs and 1.4215 after 8 epochs.
 
 ## Observations
-- **Dataset:** [typical story length, simple vocabulary, common openings]
-- **Training:** [did the loss fall steadily? was validation loss close to training loss?]
-- **Generated text:** [were words real? grammar? did the story stay on topic?]
-- **Temperature:** [what changed with low and high temperature?]
-- **Experiments:** [which setting had the lowest loss; did more layers or heads help; how did text change]
+- **Dataset:** The stories are short, with a mean of about 864.6 characters (169.5 words) and 5.4 paragraphs. They use simple words and short sentences, written for young children. Many start with "Once upon a time" (1786 of 3000 stories).
+- **Training:** Training loss fell from 2.3309 at epoch 1 to 1.4716 at epoch 8. Validation loss fell from 2.3169 to 1.4215 and stayed close to the training loss (difference about 0.8593), so there was no clear overfitting. The final perplexity was 4.15, compared with 74 for random guessing.
+- **Generated text:** Most words were partly real . Sentences were sometimes broken. The story drifted or repeated. For example, it produced: "Once upon a time, there day named "You are! So said, are out some of the larke the the cat. He rab dog her and bet was friend and stilly all he will now his oned around but don the poorted in if to he caround. He downe the the the cots and Shelp the they all that it says, "I a a care you said in you."
+- **Temperature:** At a low temperature (0.5) the text was more repetitive but cleaner. At a high temperature (1.0) it was more varied but with more spelling mistakes and odd words.
+- **Experiments:** The lowest validation loss came from the model with 4 layers and 1 head (loss 1.656, perplexity 5.24). The 1-layer model (224,384 parameters) reached a loss of 1.779 (perplexity 5.93), the 2-layer model (422,656 parameters) reached 1.736 (5.67), and the 4-layer, 4-head model (819,200 parameters) reached 1.730 (5.64). So adding layers helped: the loss fell from 1.779 with 1 layer to 1.730 with 4 layers (both with 4 heads). Adding heads did not help in this test: with 4 layers, 1 head (1.656) did better than 4 heads (1.730). This is a single short run of 5 epochs per setting, so differences of this size may be partly random and do not prove that 1 head is better in general. For all settings, the loss fell from about 2.2 at epoch 2 to about 1.7 to 1.8 at epoch 5, so more training reduced the loss. Deeper models were slower per epoch (about 4 s for 1 layer, 10 s for 4 layers on the GPU) and started similar to the small models, but their loss fell faster in the later epochs.
 - **Limits:** the model is tiny and trained on a small subset for a short time, so stories are short-range and often inconsistent. Character-level modelling also makes the model learn spelling before meaning.
-- **Challenges:** On my computer `import pandas` and then `import torch` failed with "An Application Control policy has blocked this file" (Windows security blocked the `pyarrow` and `torch` DLL files), so the notebook could not run locally. I avoided the `datasets` library by downloading the dataset text files directly from Hugging Face, and ran the notebook in Google Colab with a GPU. [add other challenges]
+- **Challenges:** On my computer `import pandas` and then `import torch` failed with "An Application Control policy has blocked this file" (Windows security blocked the `pyarrow` and `torch` DLL files), so the notebook could not run locally. I avoided the `datasets` library by downloading the dataset text files directly from Hugging Face, and ran the notebook in Google Colab with a GPU.
 
 ## Discussion: Mechanisms that improve performance
 - **Token and positional embeddings:** turn characters into vectors and tell the model where each character is, since attention alone ignores order.
