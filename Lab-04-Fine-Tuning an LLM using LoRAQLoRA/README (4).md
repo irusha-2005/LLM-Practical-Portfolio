@@ -13,13 +13,14 @@
 In this lab I fine-tuned a small instruction-tuned language model so that it can answer customer questions for a computer shop. I created my own dataset of 32 question-and-answer pairs, trained LoRA adapters on top of a 4-bit quantised model (QLoRA), and then compared the original model with the fine-tuned model using the same questions, including questions that were **not** in the training data.
 
 ## 2. Folder Structure
-
+```
 Lab-03-Tiny-Transformer/
 ├── README.md
 ├── notebook/
 │   └── Lab_04_Fine_Tuning_an_LLM_using_LoRA_QLoRA_(2).ipynb
 └── screenshots
     └── 01_gpu.png ... 07_discussion.png   (screenshots of outputs)
+```
 
 ## 3. Tasks and Implementation
 Full code: [`notebook/lab03_tiny_transformer.ipynb`](notebook/Lab_04_Fine_Tuning_an_LLM_using_LoRA_QLoRA_(2).ipynb)
