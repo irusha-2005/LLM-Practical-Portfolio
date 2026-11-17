@@ -1,0 +1,536 @@
+{
+  "name": "University Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7bcf35a3-02fa-404f-a119-cffa6abf3211",
+      "name": "When chat message received",
+      "webhookId": "494545e0-00ef-4153-9b3a-c4067d084840"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=You are an intelligent university assistant. Today's date and time is {{ $now.toFormat('cccc, yyyy-MM-dd HH:mm') }} (timezone Asia/Colombo, +05:30).\n\nYou have these tools:\n- Google Calendar get events: check the schedule and find free times.\n- Google Calendar create event: create an event. Before creating an event, first tell the user the title, date and time, and ask \"Shall I create it?\". Only create it after the user says yes. Write start and end times in ISO format with +05:30, for example 2026-11-16T14:00:00+05:30. If no end time is given, make the event one hour long.\n- Google Sheets get rows: read student records (StudentID, Name, Degree, Year, Email).\n- Google Sheets update row: update a student's Degree, Year or Email using the StudentID.\n- Google Docs create: create a new document with a title.\n- Google Docs update: write text into a document using the document ID.\n- Gmail send: send an email with a recipient, subject and message.\n\nAlways use the right tool instead of guessing. Never invent information. After using a tool, tell the user clearly what you did."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "943d804f-f292-449f-befd-3eaf8616b492",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:3b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        96,
+        208
+      ],
+      "id": "97724802-aab8-43fb-8bb5-35299fe207dd",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "lbc8Mis81IojeNJ7",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        240,
+        208
+      ],
+      "id": "3b2e08d1-b16b-4cc6-8a9b-3584ab2a8c0b",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to retrieve events from the user's Google Calendar for a specified date or date range. Use it whenever the user asks about their schedule, upcoming events or what is on a certain day.",
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "irushashamal8@gmail.com",
+          "mode": "list",
+          "cachedResultName": "irushashamal8@gmail.com"
+        },
+        "timeMin": "={{ $now.startOf('day') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.4,
+      "position": [
+        384,
+        208
+      ],
+      "id": "fc93a607-fce5-486d-97df-c77e3dcaa82a",
+      "name": "Get many events in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "AiJWN9l5HoasPEMM",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Create a new event in the user's Google Calendar. Use this tool when the user asks to create, add or schedule an event. The start and end must be in ISO format with the +05:30 timezone, for example 2026-11-16T14:00:00+05:30. If the user gives no end time, make the event one hour long.",
+        "calendar": {
+          "__rl": true,
+          "value": "irushashamal8@gmail.com",
+          "mode": "list",
+          "cachedResultName": "irushashamal8@gmail.com"
+        },
+        "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+        "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+        "additionalFields": {
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        208
+      ],
+      "id": "b4b51f47-d85b-4556-9171-bfbd86c8292f",
+      "name": "Create an event in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "AiJWN9l5HoasPEMM",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Read student records from the Student Records Google Sheet. Use this tool whenever the user asks about a student, their degree, year or email. It returns the rows with the columns StudentID, Name, Degree, Year and Email.",
+        "documentId": {
+          "__rl": true,
+          "value": "1NsMLiNAvwupaeE0DPgJeG6k2_BcaeE-Ynw_TuBaweG0",
+          "mode": "list",
+          "cachedResultName": "Student Records",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NsMLiNAvwupaeE0DPgJeG6k2_BcaeE-Ynw_TuBaweG0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NsMLiNAvwupaeE0DPgJeG6k2_BcaeE-Ynw_TuBaweG0/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        480,
+        304
+      ],
+      "id": "75df2b7c-069d-4f96-80c6-8e751778891b",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5nRBUqucpupXL0nG",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Update a student's record in the Student Records Google Sheet. Use this tool when the user asks to change a student's degree, year or email. Find the student using the StudentID and change only the fields the user mentioned.",
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1NsMLiNAvwupaeE0DPgJeG6k2_BcaeE-Ynw_TuBaweG0",
+          "mode": "list",
+          "cachedResultName": "Student Records",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NsMLiNAvwupaeE0DPgJeG6k2_BcaeE-Ynw_TuBaweG0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NsMLiNAvwupaeE0DPgJeG6k2_BcaeE-Ynw_TuBaweG0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "StudentID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('StudentID__using_to_match_', ``, 'string') }}",
+            "Degree": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Degree', ``, 'string') }}",
+            "Year": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Year', ``, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}",
+            "Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Name', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "StudentID"
+          ],
+          "schema": [
+            {
+              "id": "StudentID",
+              "displayName": "StudentID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Degree",
+              "displayName": "Degree",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Year",
+              "displayName": "Year",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        576,
+        240
+      ],
+      "id": "22e515f2-63b4-4cc3-8682-d9ae27d93c8d",
+      "name": "Update row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5nRBUqucpupXL0nG",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Create a new empty Google Doc. Use this tool when the user asks to generate or create a document, letter or report. It needs a title. It returns the document ID, which is needed to add text to the document.",
+        "folderId": "default",
+        "title": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Title', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        576,
+        304
+      ],
+      "id": "4c66523c-d401-4ea1-a295-af98e7e332e0",
+      "name": "Create a document in Google Docs",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "NfwDGsiNXZJpuqvZ",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Write text into an existing Google Doc. Use this tool after creating a document, to add the content the user asked for. It needs the document ID returned by the create document tool, and the text to write.",
+        "operation": "update",
+        "documentURL": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Doc_ID_or_URL', ``, 'string') }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('actionFields0_Old_Text', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        576,
+        240
+      ],
+      "id": "68cf39fe-82a3-41fb-aec5-0f91b6389e23",
+      "name": "Update a document in Google Docs",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "NfwDGsiNXZJpuqvZ",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Send an email from the user's Gmail account. Use this tool when the user asks to send a notification or email. It needs the recipient email address, a subject and the message text.",
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "emailType": "text",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.2,
+      "position": [
+        576,
+        400
+      ],
+      "id": "91bbad25-486f-4011-80af-e0c65e8050a5",
+      "name": "Send a message in Gmail",
+      "webhookId": "1f87b47e-7c6d-4c53-8620-23f373b3fe9f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "gjQsY3ghEPzlzRS4",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "qwen3-embedding:0.6b"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        688,
+        240
+      ],
+      "id": "0fa2aeed-8b6c-4e7c-b342-b6a909e8585a",
+      "name": "Embeddings Ollama",
+      "credentials": {
+        "ollamaApi": {
+          "id": "lbc8Mis81IojeNJ7",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Search the university knowledge base. Use this tool for questions about library opening hours, student services, degree modules, late submission rules, extensions and exam results.",
+        "memoryKey": {
+          "__rl": true,
+          "value": "university_knowledge",
+          "mode": "list",
+          "cachedResultName": "university_knowledge"
+        },
+        "topK": 3
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.4,
+      "position": [
+        592,
+        32
+      ],
+      "id": "52794e6a-c486-4e59-88ea-5d97f2361d19",
+      "name": "search_university_knowledge"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a document in Google Docs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a document in Google Docs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message in Gmail": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama": {
+      "ai_embedding": [
+        [
+          {
+            "node": "search_university_knowledge",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "search_university_knowledge": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "be4a0411-6329-4e61-a7a1-de6ed348097c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "db5bcd9c9800723335fededb43ea770ba73c09bd8d40b0ad70910855aa63e5be"
+  },
+  "nodeGroups": [],
+  "id": "bQkqmjgoyCRbXBbE",
+  "tags": []
+}
