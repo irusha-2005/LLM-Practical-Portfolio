@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "question": "What is the duration of the BSc (Honours) in Computer Science?",
+    "reference_answer": "The degree takes 4 years.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      12
+    ],
+    "keywords": [
+      "4 years|four years"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Which module has the code CS303.3?",
+    "reference_answer": "CS303.3 is Computational Theory.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      13
+    ],
+    "keywords": [
+      "computational theory"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is the module code for Cryptography?",
+    "reference_answer": "Cryptography is CS302.3.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      13,
+      16
+    ],
+    "keywords": [
+      "CS302"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is the module code of Software Quality Assurance?",
+    "reference_answer": "Software Quality Assurance is SE304.3.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      7,
+      10
+    ],
+    "keywords": [
+      "SE304"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "In which year do Computer Science students do the internship?",
+    "reference_answer": "Industry training/internship is in the third year (Year 03).",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      12,
+      13
+    ],
+    "keywords": [
+      "third year|year 3|year 03"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "How many credits is the CS Honours Award Project?",
+    "reference_answer": "The CS Honours Award Project (CS401.6) is worth 6 credits.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      14
+    ],
+    "keywords": [
+      "\\b6\\b"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What are the career prospects for Computer Networks graduates?",
+    "reference_answer": "Network Administrator, Network Engineer, Network Analyst, IT/Systems Support Engineer, Network Architect, VoIP Engineer.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      15
+    ],
+    "keywords": [
+      "network administrator",
+      "network engineer"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Which universities has the Faculty of Computing partnered with?",
+    "reference_answer": "University College Dublin (Ireland), University of Plymouth (UK) and Victoria University (Australia).",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      2
+    ],
+    "keywords": [
+      "dublin",
+      "plymouth",
+      "victoria"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What is the duration of the BSc in Multimedia?",
+    "reference_answer": "The BSc in Multimedia is a 3-year degree.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      18
+    ],
+    "keywords": [
+      "3 years|three|3-year"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Which Year 4 modules are core in Software Engineering?",
+    "reference_answer": "Business Policy and Strategy (BS401.3) and SE Honours Award Project (SE401.6).",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      11
+    ],
+    "keywords": [
+      "business policy",
+      "honours award project"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Is Artificial Intelligence core or elective in the Computer Science degree?",
+    "reference_answer": "CS403.3 Artificial Intelligence is a Core module in Computer Science.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      14
+    ],
+    "keywords": [
+      "core"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "What is the web URL and phone number of the Faculty of Computing?",
+    "reference_answer": "Web: www.nsbm.ac.lk, Phone: 0115446000.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      1
+    ],
+    "keywords": [
+      "nsbm.ac.lk",
+      "0115446000"
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Does the internship module count towards the GPA?",
+    "reference_answer": "No, it does not contribute to the GPA for award classification but counts toward the Level 3 credit requirement.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      8,
+      11,
+      14,
+      17
+    ],
+    "keywords": [
+      "not|no\\b"
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What is the module code for Bio Informatics?",
+    "reference_answer": "Bio Informatics is CS406.3 (elective).",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      14
+    ],
+    "keywords": [
+      "CS406"
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Which degree includes the module Voice and Video over IP?",
+    "reference_answer": "BSc (Honours) in Computer Networks (CN205.3).",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      16
+    ],
+    "keywords": [
+      "computer networks"
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What academic progression options are available after the degrees?",
+    "reference_answer": "MSc, MBA and PhD.",
+    "supporting_document": "Computing Awards Handbook",
+    "supporting_pages": [
+      6,
+      9,
+      12,
+      15
+    ],
+    "keywords": [
+      "msc",
+      "mba",
+      "phd"
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+langchain
+langchain-community
+langchain-ollama
+langchain-chroma
+langchain-text-splitters
+chromadb
+streamlit
+pymupdf
+python-docx
+python-dotenv
+rank-bm25
