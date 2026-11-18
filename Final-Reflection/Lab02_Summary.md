@@ -38,7 +38,7 @@ We asked the LLM to act as a product-development partner and ask 5 questions abo
 4. how different days (lectures, labs, library) change what is needed,
 5. constraints (budget, physical product or app, lockers and charging points on campus).
 
-Our answers: commuting students with 30 to 45 minute trips, laptop every day, ID card, charger and USB drive forgotten most, days that differ a lot, and a student budget. *(Edit these if your group's answers differed.)*
+Our answers: commuting students with 30 to 45 minute trips, laptop every day, ID card, charger and USB drive forgotten most, days that differ a lot, and a student budget. 
 
 ### Step 2: Brainstorm ideas
 The LLM suggested six ideas, each with a weakness.
