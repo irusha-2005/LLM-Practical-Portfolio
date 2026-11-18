@@ -93,7 +93,7 @@ when the question contains exact terms such as module codes (for example CS303.3
 The sidebar of the app lets the user switch between: Baseline (vector only), BM25 only,
 Hybrid (BM25 + vector + RRF) and Hybrid + LLM reranking.
 
-![Architecture](Lab-05-RAG-Pipeline/RAG_test-groupwork/architecture_diagram.png)
+![Architecture](LLM-Practical-Portfolio/Lab-05-RAG-Pipeline/RAG_test-groupwork/architecture_diagram.png)
 
 ## 8. Evaluation
 
